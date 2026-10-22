@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>王浩成 Haocheng Wang · AI Product Manager</title>
+<style>
+:root{--ink:#111214;--sub:#6E6E73;--line:#E8E8EA;--soft:#F6F7F9;--blue:#2563EB;--blue2:#5B8CFF;--green:#22A06B}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","PingFang SC","Noto Sans SC","Helvetica Neue",Arial,sans-serif;color:var(--ink);background:#fff;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+/* nav */
+nav{position:fixed;inset:0 0 auto 0;height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 40px;background:rgba(255,255,255,.78);backdrop-filter:saturate(180%) blur(16px);border-bottom:1px solid rgba(0,0,0,.05);z-index:10}
+.logo{font-weight:700;font-size:20px;letter-spacing:-.02em}
+.logo i{font-style:normal;color:var(--blue)}
+.links{display:flex;gap:28px;font-size:14px;color:var(--sub)}
+.links a:hover{color:var(--ink)}
+.right{display:flex;gap:10px;align-items:center}
+.lang{font-size:13px;border:1px solid var(--line);border-radius:8px;padding:7px 10px;background:#fff;cursor:pointer;color:var(--sub);min-height:36px}
+.lang b{color:var(--ink)}
+.btn{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:500;padding:11px 20px;border-radius:999px;min-height:44px;transition:.2s}
+.btn.dark{background:var(--ink);color:#fff}.btn.dark:hover{background:#000;transform:translateY(-1px)}
+.btn.ghost{color:var(--blue)}.btn.ghost:hover{opacity:.75}
+.btn.sm{padding:8px 16px;min-height:36px;font-size:13px}
+/* hero */
+.hero{position:relative;min-height:min(100vh,960px);display:grid;grid-template-columns:1.05fr .95fr;align-items:center;gap:48px;max-width:1240px;margin:0 auto;padding:120px 40px 120px}
+.bg{position:absolute;inset:0;z-index:-1;overflow:hidden;pointer-events:none}
+.bg::before{content:"";position:absolute;inset:0;background-image:linear-gradient(#EEF0F3 1px,transparent 1px),linear-gradient(90deg,#EEF0F3 1px,transparent 1px);background-size:56px 56px;mask-image:radial-gradient(ellipse 70% 60% at 60% 45%,#000 20%,transparent 75%)}
+.bg::after{content:"";position:absolute;width:620px;height:620px;right:-80px;top:80px;background:radial-gradient(circle,rgba(91,140,255,.18),transparent 65%);filter:blur(20px)}
+.tag{display:inline-flex;align-items:center;gap:8px;font-size:13px;color:var(--sub);border:1px solid var(--line);border-radius:999px;padding:6px 14px 6px 10px;background:#fff}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 0 4px rgba(34,160,107,.15);animation:pulse 2s infinite}
+@keyframes pulse{50%{box-shadow:0 0 0 7px rgba(34,160,107,0)}}
+h1{margin:28px 0 24px;font-size:clamp(40px,5.4vw,72px);line-height:1.18;font-weight:700;letter-spacing:.16em}
+h1 .g{background:linear-gradient(90deg,var(--blue),#7C5CFF);-webkit-background-clip:text;background-clip:text;color:transparent}
+html[lang=en] h1{letter-spacing:-.03em;line-height:1.05}
+.lead{font-size:19px;line-height:1.7;color:var(--sub);max-width:500px}
+.lead b{color:var(--ink);font-weight:600}
+.role{margin-top:20px;font-size:14px;font-weight:500;letter-spacing:.04em;color:var(--ink)}
+.role span{color:#C4C4C8;margin:0 8px}
+.cta{display:flex;gap:8px;margin-top:36px;flex-wrap:wrap}
+.motto{position:absolute;left:40px;bottom:48px;font-size:12px;letter-spacing:.28em;color:#A1A1A6}
+.scroll{position:absolute;right:40px;bottom:48px;font-size:12px;color:#A1A1A6}
+/* agent console */
+.console{position:relative;background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:0 1px 2px rgba(0,0,0,.04),0 24px 60px -20px rgba(37,99,235,.22);overflow:hidden}
+.bar{display:flex;align-items:center;gap:6px;padding:12px 16px;border-bottom:1px solid var(--line);background:var(--soft)}
+.bar i{width:10px;height:10px;border-radius:50%;background:#E2E2E5}
+.bar small{margin-left:10px;font-size:12px;color:var(--sub);font-family:Menlo,Consolas,monospace}
+.goal{padding:20px 22px 8px}
+.lbl{font-size:11px;letter-spacing:.14em;color:#A1A1A6;font-weight:600}
+.goal p{margin-top:8px;font-size:16px;font-weight:500;min-height:24px}
+.caret{display:inline-block;width:2px;height:18px;background:var(--blue);vertical-align:-3px;margin-left:2px;animation:blink 1s steps(2) infinite}
+@keyframes blink{50%{opacity:0}}
+.flow{padding:14px 22px 22px;display:grid;gap:10px}
+.step{display:grid;grid-template-columns:32px minmax(0,1fr) auto;align-items:center;gap:12px;padding:12px 14px;border:1px solid var(--line);border-radius:10px;opacity:.35;transform:translateY(4px);transition:.5s}
+.step.on{opacity:1;transform:none}
+.step.run{border-color:rgba(37,99,235,.45);background:#F5F8FF}
+.ic{width:32px;height:32px;border-radius:8px;display:grid;place-items:center;font-size:12px;font-weight:700;background:var(--soft);color:var(--sub);font-family:Menlo,monospace}
+.step.run .ic{background:var(--blue);color:#fff}
+.step.done .ic{background:#E8F5EE;color:var(--green)}
+.step h4{font-size:14px;font-weight:600}
+.step p{font-size:12.5px;color:var(--sub);margin-top:2px}
+.st{font-size:12px;font-family:Menlo,monospace;color:#A1A1A6}
+.step.run .st{color:var(--blue)}.step.done .st{color:var(--green)}
+.agents{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.agents span{white-space:nowrap;font-size:11px;padding:2px 8px;border-radius:6px;background:#fff;border:1px solid var(--line);color:var(--sub)}
+.foot{display:flex;justify-content:space-between;padding:12px 22px;border-top:1px solid var(--line);font-size:12px;color:var(--sub);background:var(--soft);font-family:Menlo,monospace}
+.float{position:absolute;background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 16px;box-shadow:0 12px 30px -12px rgba(0,0,0,.15);font-size:12px;color:var(--sub);animation:fl 6s ease-in-out infinite}
+.float b{display:block;font-size:22px;color:var(--ink);letter-spacing:-.02em}
+.f1{left:-36px;bottom:-34px}.f1 b{font-size:15px;display:flex;align-items:center;gap:8px}.f2{right:-24px;top:-28px;animation-delay:-3s}
+@keyframes fl{50%{transform:translateY(-8px)}}
+.visual{position:relative}
+/* stats */
+.stats{max-width:1240px;margin:0 auto;padding:0 40px 96px;display:grid;grid-template-columns:repeat(5,1fr);border-top:1px solid var(--line)}
+.stats div{padding:28px 20px 0 0}
+.stats b{display:block;font-size:30px;font-weight:700;letter-spacing:-.02em}
+.stats span{font-size:13px;color:var(--sub)}
+.reveal{opacity:0;transform:translateY(16px);animation:rv .9s cubic-bezier(.2,.7,.2,1) forwards}
+.d1{animation-delay:.1s}.d2{animation-delay:.25s}.d3{animation-delay:.4s}.d4{animation-delay:.55s}.d5{animation-delay:.7s}
+@keyframes rv{to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+@media (max-width:960px){
+ .links{display:none}nav{padding:0 20px}
+ .hero{grid-template-columns:1fr;padding:104px 20px 64px;min-height:auto;gap:40px}
+ h1{letter-spacing:.08em}
+ .f1{display:none}.f2{right:-6px}.foot span:last-child{display:none}
+ .motto,.scroll{display:none}
+ .stats{grid-template-columns:repeat(2,1fr);margin:0;padding:0 20px 64px}
+ .stats div:last-child{grid-column:span 2}
+}
+
+.wrap{max-width:1160px;margin:0 auto;padding:0 40px}.wrap.narrow{max-width:820px}
+.sec{padding:128px 0;scroll-margin-top:40px}.sec.soft{background:#FAFAFB;border-top:1px solid #F0F0F2;border-bottom:1px solid #F0F0F2}
+.sh{margin-bottom:64px}.eb{font-size:12px;letter-spacing:.24em;color:var(--blue);font-weight:600;margin-bottom:16px}
+.sh h2,.abt h2,.ct h2{font-size:clamp(32px,4vw,52px);line-height:1.25;font-weight:700;letter-spacing:.06em}
+html[lang=en] .sh h2,html[lang=en] .abt h2,html[lang=en] .ct h2{letter-spacing:-.02em;line-height:1.1}
+.shp{margin-top:20px;font-size:18px;color:var(--sub);max-width:620px;line-height:1.7}
+.rv{opacity:0;transform:translateY(24px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)}.rv.in{opacity:1;transform:none}
+.corp{display:grid;grid-template-columns:280px 1fr;gap:32px;align-items:center;padding:20px;border:1px solid var(--line);border-radius:16px;margin-bottom:96px;background:#fff}
+.corp img{width:100%;border-radius:10px;border:1px solid var(--line)}.corp b{font-size:18px;display:block;margin-bottom:8px}.corp p{color:var(--sub);line-height:1.7;font-size:15px}
+.prod{display:grid;grid-template-columns:1fr 1.15fr;gap:64px;align-items:center;margin-bottom:128px}.prod:last-child{margin-bottom:0}
+.prod.rev .pt{order:2}.pno{font-family:Menlo,monospace;font-size:13px;color:var(--blue);margin-bottom:12px}
+.prod h3{font-size:40px;letter-spacing:-.02em;font-weight:700}.pk{color:var(--sub);margin-top:6px;font-size:16px}
+.pst{display:inline-flex;align-items:center;gap:8px;margin:20px 0 28px;font-size:13px;padding:6px 12px;border-radius:999px;background:#F2F7F4;color:#1C7A52}
+.pq{margin-bottom:20px}.pq .lbl{font-size:11px;letter-spacing:.16em;color:#A1A1A6;font-weight:600;margin-bottom:6px}.pq p{font-size:15.5px;line-height:1.75}
+.pl{list-style:none;margin:8px 0 24px;display:grid;gap:8px}.pl li{position:relative;padding-left:20px;font-size:14.5px;color:#3A3A3C;line-height:1.6}.pl li::before{content:"";position:absolute;left:2px;top:9px;width:8px;height:8px;border-radius:2px;background:var(--blue);opacity:.8}
+.prole{font-size:14px;color:var(--sub);padding-top:16px;border-top:1px solid var(--line);margin-bottom:12px}.prole b{color:var(--ink);margin-right:10px}
+.pv{position:relative}.shot{border-radius:14px;overflow:hidden;border:1px solid var(--line);box-shadow:0 30px 60px -30px rgba(17,18,20,.25);background:#fff;transition:transform .5s}.shot:hover{transform:translateY(-4px)}
+.shot img{display:block;width:100%}.shot.s2{width:58%;position:absolute;right:-24px;bottom:-56px;box-shadow:0 20px 40px -16px rgba(17,18,20,.3)}
+.mock{background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:0 30px 60px -30px rgba(37,99,235,.3)}
+.sfb{padding:22px;display:grid;gap:14px}.q{font-size:14px;line-height:1.6;padding:12px 14px;border-radius:12px;max-width:85%}.q.u{justify-self:end;background:var(--ink);color:#fff}
+.q.a{background:#F5F8FF;border:1px solid #DCE6FF}.q.a b{color:var(--blue);margin-right:6px}.q ol{margin:6px 0 0 18px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}.chips span{font-size:12.5px;padding:5px 10px;border-radius:6px;border:1px solid var(--line);background:#fff;color:#3A3A3C}
+.doc{border:1px solid var(--line);border-radius:10px;padding:16px;display:grid;gap:10px}.doc .l{height:8px;border-radius:4px;background:#ECEEF2}.w60{width:60%}.w80{width:80%}.w40{width:40%}.doc .l.w60{height:12px;background:#D9DEE8}
+.ok{font-size:12.5px;color:var(--green);font-family:Menlo,monospace;margin-top:4px}
+.steps4{list-style:none;display:grid;grid-template-columns:repeat(4,1fr);gap:16px}.steps4 li{background:#fff;border:1px solid var(--line);border-radius:14px;padding:28px 24px;transition:.3s}.steps4 li:hover{border-color:#C9D7FF;transform:translateY(-4px)}
+.sn{font-family:Menlo,monospace;font-size:13px;color:var(--blue)}.steps4 h4{font-size:18px;margin:28px 0 10px}.steps4 p{font-size:14px;color:var(--sub);line-height:1.7}
+.rstats{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-bottom:64px}.rstats div{padding:24px 0}.rstats b{display:block;font-size:32px;letter-spacing:-.02em}.rstats span{font-size:13px;color:var(--sub)}
+.feat{display:grid;grid-template-columns:1.3fr 1fr;gap:48px;align-items:center;margin-bottom:24px}.fimg img{width:100%;display:block;border-radius:12px;border:1px solid var(--line)}
+.fimg>img{box-shadow:0 30px 60px -30px rgba(17,18,20,.25)}.fmini{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
+.ftx h3{font-size:30px;letter-spacing:-.01em}.ftx p{font-size:15px;line-height:1.75;margin:12px 0}.ftx .pk{margin-top:6px;font-size:14px}.ftx .chips{margin:16px 0}.small{color:var(--sub);font-size:14px!important}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:40px 0 96px}.card{border:1px solid var(--line);border-radius:14px;padding:28px}.card .eb{font-size:11px;margin-bottom:12px}.card h4{font-size:20px;margin-bottom:10px}.card p{font-size:14.5px;color:var(--sub);line-height:1.75}
+.sub{font-size:24px;margin-bottom:24px}.pubs{list-style:none;border-top:1px solid var(--line)}
+.pub{display:grid;grid-template-columns:220px 1fr;gap:32px;padding:24px 0;border-bottom:1px solid var(--line)}.pv1 b{display:block;font-size:15px}.pv1 small{font-size:12.5px;color:var(--sub);line-height:1.5;display:block;margin-top:4px}
+.ptl{font-size:16.5px;font-weight:600;line-height:1.5}.pau{font-size:13.5px;color:var(--sub);margin:6px 0 10px}.pau b{color:var(--ink)}
+.pbadge{display:inline-block;font-size:12.5px;padding:3px 10px;border-radius:6px;background:var(--soft);color:#3A3A3C;border:1px solid var(--line)}.pbadge.hot{background:#EEF3FF;border-color:#D4E0FF;color:var(--blue)}
+.tl{list-style:none;position:relative;border-left:1px solid #DADCE0;margin-left:8px}.tl li{display:grid;grid-template-columns:170px 1fr;gap:24px;padding:0 0 48px 32px;position:relative}.tl li:last-child{padding-bottom:0}
+.tl li::before{content:"";position:absolute;left:-6px;top:6px;width:11px;height:11px;border-radius:50%;background:#fff;border:2px solid var(--blue)}
+.ed{font-family:Menlo,monospace;font-size:13px;color:var(--sub);padding-top:3px}.tl h4{font-size:19px}.er{display:inline-block;font-size:13px;color:var(--blue);margin:4px 0 10px}.tl p{font-size:15px;color:#3A3A3C;line-height:1.75;max-width:640px}
+.ags{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.ag{border:1px solid var(--line);border-radius:14px;padding:28px 24px}.ag h4{font-size:13px;letter-spacing:.12em;color:var(--sub);margin-bottom:20px;font-weight:600}
+.ag ul{list-style:none;display:grid;gap:18px}.ag li{display:grid;grid-template-columns:52px 1fr;gap:12px}.ay{font-family:Menlo,monospace;font-size:12px;color:#A1A1A6;padding-top:3px}
+.ag b{font-size:16px}.ag li.top b{color:var(--blue)}.ag p{font-size:13.5px;color:var(--sub);line-height:1.6;margin-top:2px}
+.ab{display:grid;grid-template-columns:340px 1fr;gap:72px;align-items:start}.abp{position:sticky;top:96px}.abp img{width:100%;border-radius:16px;display:block;border:1px solid var(--line)}
+.abn{display:flex;justify-content:space-between;align-items:baseline;margin-top:16px}.abn b{font-size:20px}.abn span{color:var(--sub);font-size:14px}
+.lead2{font-size:17px;line-height:1.85;color:#3A3A3C;margin:24px 0 32px;max-width:640px}
+.edu{display:grid;grid-template-columns:150px 1fr;gap:24px;align-items:center;padding:20px 24px;border:1px solid var(--line);border-radius:14px;background:#fff;margin-bottom:40px}.edu img{width:100%}.edu b{font-size:16px;display:block;margin-bottom:6px}.edu p{font-size:14px;color:var(--sub);line-height:1.6}
+.sks{display:grid;grid-template-columns:1fr 1fr;gap:28px 32px}.skg h5{font-size:14px;margin-bottom:12px}
+details{border-bottom:1px solid var(--line);padding:24px 0}details:first-of-type{border-top:1px solid var(--line)}summary{font-size:19px;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:16px;min-height:28px}
+summary::-webkit-details-marker{display:none}summary::after{content:"+";color:var(--blue);font-weight:400;font-size:24px;line-height:1;transition:.3s}details[open] summary::after{transform:rotate(45deg)}details p{margin-top:14px;color:var(--sub);line-height:1.8;font-size:16px;max-width:680px}
+.contact{background:linear-gradient(180deg,#fff,#F3F6FF);padding-bottom:0}.ct{display:grid;grid-template-columns:1fr 260px;gap:64px;align-items:end;padding-bottom:96px}
+.cl{display:grid;gap:4px;margin:40px 0 32px}.cl a,.cl>span{font-size:clamp(18px,2.2vw,26px);font-weight:600;padding:14px 0;border-bottom:1px solid var(--line);display:flex;align-items:baseline;gap:24px;word-break:break-all}.cl a:hover{color:var(--blue)}
+.cl small{font-size:12px;font-weight:500;color:#A1A1A6;width:64px;flex-shrink:0;letter-spacing:.08em}
+.qr{text-align:center}.qr img{width:100%;border-radius:16px;border:1px solid var(--line);background:#fff}.qr p{font-size:13px;color:var(--sub);margin-top:10px}
+footer{max-width:1160px;margin:0 auto;padding:28px 40px;border-top:1px solid var(--line);display:flex;justify-content:space-between;font-size:12.5px;color:#A1A1A6;letter-spacing:.06em}footer span:first-child{font-weight:700;color:var(--ink);letter-spacing:0;font-size:15px}footer i{font-style:normal;color:var(--blue)}
+@media (max-width:960px){.wrap{padding:0 20px}.sec{padding:88px 0}.sh{margin-bottom:40px}
+ .corp,.prod,.feat,.duo,.ab,.ct,.pub,.tl li{grid-template-columns:1fr}.prod{gap:32px;margin-bottom:96px}.prod.rev .pt{order:0}.prod h3{font-size:32px}
+ .shot.s2{position:relative;width:100%;right:0;bottom:0;margin-top:12px}.steps4,.rstats{grid-template-columns:1fr 1fr}.ags,.sks{grid-template-columns:1fr}
+ .pub{gap:8px}.tl li{gap:4px}.abp{position:static;max-width:280px}.ab{gap:40px}.edu{grid-template-columns:1fr}.edu img{max-width:200px}.ct{gap:40px;padding-bottom:64px}.qr{max-width:220px}
+ footer{flex-direction:column;gap:8px;padding:24px 20px}.corp{margin-bottom:64px}}
+@media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<nav>
+  <a class="logo" href="#">haocheng<i>.</i></a>
+  <div class="links">
+    <a href="#products" data-zh="产品" data-en="Products">产品</a>
+    <a href="#method" data-zh="方法" data-en="Method">方法</a>
+    <a href="#research" data-zh="研究" data-en="Research">研究</a>
+    <a href="#experience" data-zh="经历" data-en="Experience">经历</a>
+    <a href="#awards" data-zh="荣誉" data-en="Awards">荣誉</a>
+    <a href="#about" data-zh="关于" data-en="About">关于</a>
+    <a href="#contact" data-zh="联系" data-en="Contact">联系</a>
+  </div>
+  <div class="right">
+    <button class="lang" id="lang" aria-label="切换语言 Switch language"><b>中</b> / EN</button>
+    <a class="btn dark sm resume" href="resume-zh.pdf" download data-zh="下载简历" data-en="Résumé">下载简历</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="bg"></div>
+  <div>
+    <div class="tag reveal"><span class="dot"></span><span data-zh="正在寻找 AI 产品经理实习 · 北京" data-en="Open to AI PM internships · Beijing">正在寻找 AI 产品经理实习 · 北京</span></div>
+    <h1 class="reveal d1" data-zh-html="让每个想法，<br>都能被<span class='g'>交付</span>。" data-en-html="Ideas,<br><span class='g'>shipped</span> with agents.">让每个想法，<br>都能被<span class="g">交付</span>。</h1>
+    <p class="lead reveal d2" data-zh-html="我是<b>王浩成</b>，AI 产品经理 / 创业者。<br>从用户访谈到 PRD，再用 AI Coding 做出可运行的原型——把模糊的需求，变成 Agent 能执行、用户能验收的产品。" data-en-html="I'm <b>Haocheng Wang</b>, an AI product manager and founder. From user interviews to PRDs to working prototypes built with AI coding — I turn fuzzy needs into products agents can execute and users can accept.">我是<b>王浩成</b>，AI 产品经理 / 创业者。<br>从用户访谈到 PRD，再用 AI Coding 做出可运行的原型——把模糊的需求，变成 Agent 能执行、用户能验收的产品。</p>
+    <p class="role reveal d3">AI Agent<span>/</span>Workflow<span>/</span>AI Coding<span>/</span>HCI Research</p>
+    <div class="cta reveal d4">
+      <a class="btn dark" href="#products" data-zh="查看产品作品 →" data-en="See my products →">查看产品作品 →</a>
+      <a class="btn ghost" href="https://clipai.space/" target="_blank" data-zh="访问 clipai.space ›" data-en="Visit clipai.space ›">访问 clipai.space ›</a>
+    </div>
+  </div>
+
+  <div class="visual reveal d3">
+    <div class="console" aria-label="Agent workflow demo">
+      <div class="bar"><i></i><i></i><i></i><small>haocheng.agent — mission.run</small></div>
+      <div class="goal"><div class="lbl">GOAL</div><p id="goal"></p></div>
+      <div class="flow">
+        <div class="step" data-i="0"><div class="ic">01</div><div><h4 data-zh="用户洞察" data-en="User Insight">用户洞察</h4><p data-zh="500 位目标用户访谈 · 痛点聚类" data-en="500 user interviews · pain clustering">500 位目标用户访谈 · 痛点聚类</p></div><span class="st">wait</span></div>
+        <div class="step" data-i="1"><div class="ic">02</div><div><h4 data-zh="定义产品" data-en="Define">定义产品</h4><p data-zh="PRD · 用户旅程 · 交付标准" data-en="PRD · user journey · acceptance">PRD · 用户旅程 · 交付标准</p></div><span class="st">wait</span></div>
+        <div class="step" data-i="2"><div class="ic">03</div><div><h4 data-zh="Agent 执行" data-en="Agents Build">Agent 执行</h4><div class="agents"><span>Claude Code</span><span>Codex</span><span>MCP</span><span>RAG</span></div></div><span class="st">wait</span></div>
+        <div class="step" data-i="3"><div class="ic">04</div><div><h4 data-zh="评测与验收" data-en="Evaluate & Ship">评测与验收</h4><p data-zh="准确率 · Token 成本 · 延迟" data-en="accuracy · token cost · latency">准确率 · Token 成本 · 延迟</p></div><span class="st">wait</span></div>
+      </div>
+      <div class="foot"><span id="ftl">● 3 products in flight</span><span>Clip · MeetFlow · SparkFlow</span></div>
+    </div>
+    <div class="float f1"><b><span class="dot"></span>Clip AI Card</b><span data-zh="官网与概念演示已上线" data-en="Site & concept demo live">官网与概念演示已上线</span></div>
+    <div class="float f2"><b>8</b><span data-zh="篇国际会议论文" data-en="conference papers">篇国际会议论文</span></div>
+  </div>
+  <div class="motto">YOUR PROBLEM. MY PRODUCT.</div>
+  <a class="scroll" href="#products" data-zh="向下探索 ↓" data-en="Scroll ↓">向下探索 ↓</a>
+</header>
+
+<section class="stats">
+  <div class="reveal d1"><b>3</b><span data-zh="条 AI 产品线 0→1" data-en="AI products, 0→1">条 AI 产品线 0→1</span></div>
+  <div class="reveal d2"><b>500</b><span data-zh="位核心目标用户访谈" data-en="target-user interviews">位核心目标用户访谈</span></div>
+  <div class="reveal d3"><b data-zh="1,500万+" data-en="15M+">1,500万+</b><span data-zh="新媒体项目累计播放" data-en="views on CMG projects">新媒体项目累计播放</span></div>
+  <div class="reveal d4"><b>1 / 39</b><span data-zh="专业第一 · 校一等奖学金" data-en="Ranked 1st · 1st-Class Scholarship">专业第一 · 校一等奖学金</span></div>
+  <div class="reveal d5"><b data-zh="国一" data-en="National 1st">国一</b><span data-zh="全国大学生广告艺术大赛" data-en="National Ad Art Competition">全国大学生广告艺术大赛</span></div>
+</section>
+
+<section class="sec" id="products"><div class="wrap"><div class="sh"><div class="eb">PRODUCTS</div><h2 data-zh-html="三 个 产 品 ，&lt;br&gt;一 个 问 题 。" data-en-html="Three products.&lt;br&gt;One question.">三 个 产 品 ，<br>一 个 问 题 。</h2><p class="shp" data-zh="怎样让 AI 真正接住人的意图，并交付可以验收的结果？" data-en="How can AI truly take on human intent — and deliver results people can accept?">怎样让 AI 真正接住人的意图，并交付可以验收的结果？</p></div>
+<div class="corp rv"><img src="assets/mf-cover.jpg" alt="知更远见"><div><b data-zh="北京知更远见科技有限公司 · 创始人兼 CEO" data-en="Beijing Zhigeng Vision Technology · Founder &amp; CEO">北京知更远见科技有限公司 · 创始人兼 CEO</b><p data-zh="2025.11 至今。围绕「AI 专业交付系统」打造三条产品线，完成产品方向、品牌叙事、商业计划、定价模型、融资材料与冷启动路径设计；累计完成 500 位核心目标用户访谈。" data-en="Since Nov 2025. Building three product lines around an &quot;AI professional delivery system&quot; — product direction, brand narrative, business plan, pricing, fundraising and go-to-market. 500 target-user interviews completed.">2025.11 至今。围绕「AI 专业交付系统」打造三条产品线，完成产品方向、品牌叙事、商业计划、定价模型、融资材料与冷启动路径设计；累计完成 500 位核心目标用户访谈。</p></div></div>
+<article class="prod  rv" id="clip">
+<div class="pt"><div class="pno">01</div><h3>Clip AI Card</h3><p class="pk" data-zh="Personal Agent 软硬件" data-en="Personal Agent hardware + software">Personal Agent 软硬件</p>
+<div class="pst"><span class="dot"></span><span data-zh="官网与概念演示已上线 · 硬件在研" data-en="Site &amp; concept demo live · hardware in R&amp;D">官网与概念演示已上线 · 硬件在研</span></div>
+<div class="pq"><div class="lbl"><span data-zh="问题" data-en="PROBLEM">问题</span></div><p data-zh="想法和材料出现在日常里，但交给 Agent 前，要先打开电脑、整理上下文、反复授权。" data-en="Ideas and materials show up in daily life, but handing them to an agent means opening a laptop, assembling context and re-granting access.">想法和材料出现在日常里，但交给 Agent 前，要先打开电脑、整理上下文、反复授权。</p></div>
+<div class="pq"><div class="lbl"><span data-zh="方案" data-en="SOLUTION">方案</span></div><p data-zh="一张可折叠的卡片，连接眼前的材料与已授权的 Agent：语音 / 视觉采集 → 上下文预览与授权 → Agent 执行 → 状态回执。" data-en="A foldable card that links what is in front of you to agents you have authorised: voice / visual capture → context preview &amp; consent → agent execution → status receipt.">一张可折叠的卡片，连接眼前的材料与已授权的 Agent：语音 / 视觉采集 → 上下文预览与授权 → Agent 执行 → 状态回执。</p></div>
+<ul class="pl"><li><span data-zh="卡片 · iPhone · Mac 三端协同" data-en="Card · iPhone · Mac working together">卡片 · iPhone · Mac 三端协同</span></li><li><span data-zh="先预览、再发送：采集与发送分别授权" data-en="Preview before send: capture and sharing are authorised separately">先预览、再发送：采集与发送分别授权</span></li><li><span data-zh="Mac 直连方案支持原始材料留在本地" data-en="Mac-direct mode keeps raw material on device">Mac 直连方案支持原始材料留在本地</span></li></ul>
+<div class="prole"><b><span data-zh="我的角色" data-en="My role">我的角色</span></b><span data-zh="产品定义 · 交互方案 · 数据权限设计 · 官网" data-en="Product definition · interaction · data-permission design · website">产品定义 · 交互方案 · 数据权限设计 · 官网</span></div><a class="btn ghost" href="https://clipai.space/" target="_blank" rel="noopener"><span data-zh="访问 clipai.space ›" data-en="Visit clipai.space ›">访问 clipai.space ›</span></a></div>
+<div class="pv"><figure class="shot"><img src="assets/clip.jpg" alt="Clip AI Card"></figure></div></article><article class="prod rev rv" id="meetflow">
+<div class="pt"><div class="pno">02</div><h3>MeetFlow</h3><p class="pk" data-zh="Personal AI Company · 数字员工" data-en="Personal AI Company · digital employees">Personal AI Company · 数字员工</p>
+<div class="pst"><span class="dot"></span><span data-zh="研发及内部测试中 · 京彩 OPC 二等奖" data-en="In development &amp; internal testing · Jingcai OPC 2nd Prize">研发及内部测试中 · 京彩 OPC 二等奖</span></div>
+<div class="pq"><div class="lbl"><span data-zh="问题" data-en="PROBLEM">问题</span></div><p data-zh="AI 能力不等于 AI 劳动力：工具没有岗位、没有项目上下文、没有组织协作，管理工作仍然压在人身上。" data-en="AI capability is not AI labour: tools have no role, no project context and no coordination, so management still falls on people.">AI 能力不等于 AI 劳动力：工具没有岗位、没有项目上下文、没有组织协作，管理工作仍然压在人身上。</p></div>
+<div class="pq"><div class="lbl"><span data-zh="方案" data-en="SOLUTION">方案</span></div><p data-zh="面向个人与 1–20 人小团队的 AI 公司：用户只提出 Goal，MeetFlow 生成 Mission，分派给有长期记忆的数字员工，再调度 Codex / Claude 等 Worker 执行。Founder 只处理 Decision 和 Acceptance。" data-en="An AI company for individuals and 1–20 person teams: the user sets a Goal, MeetFlow turns it into a Mission, assigns it to digital employees with long-term memory, which dispatch Workers such as Codex / Claude. The founder only handles Decisions and Acceptance.">面向个人与 1–20 人小团队的 AI 公司：用户只提出 Goal，MeetFlow 生成 Mission，分派给有长期记忆的数字员工，再调度 Codex / Claude 等 Worker 执行。Founder 只处理 Decision 和 Acceptance。</p></div>
+<ul class="pl"><li><span data-zh="Goal → Mission → 岗位 → 员工 → Worker 执行体系" data-en="Goal → Mission → Role → Employee → Worker">Goal → Mission → 岗位 → 员工 → Worker 执行体系</span></li><li><span data-zh="区分长期记忆「员工」与一次性任务「Worker」" data-en="Long-memory employees vs. single-task Workers">区分长期记忆「员工」与一次性任务「Worker」</span></li><li><span data-zh="任务路由、跨 Mission 记忆、进度看板、人工验收" data-en="Task routing, cross-mission memory, progress board, human acceptance">任务路由、跨 Mission 记忆、进度看板、人工验收</span></li><li><span data-zh="定价：1,499 / 4,999 元每月，按员工与团队收费" data-en="Pricing: ¥1,499 / ¥4,999 per month, per employee &amp; team">定价：1,499 / 4,999 元每月，按员工与团队收费</span></li></ul>
+<div class="prole"><b><span data-zh="我的角色" data-en="My role">我的角色</span></b><span data-zh="创始人兼产品负责人 · PRD · 交互 · 商业模式 · 融资材料" data-en="Founder &amp; product lead · PRD · interaction · business model · fundraising">创始人兼产品负责人 · PRD · 交互 · 商业模式 · 融资材料</span></div></div>
+<div class="pv"><figure class="shot"><img src="assets/mf-app.jpg" alt="MeetFlow"></figure><figure class="shot s2"><img src="assets/mf-flow.jpg" alt="MeetFlow flow"></figure></div></article><article class="prod  rv" id="sparkflow">
+<div class="pt"><div class="pno">03</div><h3>SparkFlow</h3><p class="pk" data-zh="AI 专业文档共创平台" data-en="AI co-creation for professional documents">AI 专业文档共创平台</p>
+<div class="pst"><span class="dot"></span><span data-zh="挑战杯首都创业计划竞赛三等奖 · 京彩三等奖" data-en="Challenge Cup (Capital) 3rd Prize · Jingcai 3rd Prize">挑战杯首都创业计划竞赛三等奖 · 京彩三等奖</span></div>
+<div class="pq"><div class="lbl"><span data-zh="问题" data-en="PROBLEM">问题</span></div><p data-zh="高校科研、产品经理、文创策划等高压交付人群，需要的不是「代写」，而是能把专业判断变成高质量文档的搭档。" data-en="Researchers, PMs and creative planners under delivery pressure don&#x27;t need ghost-writing; they need a partner that turns expert judgement into high-quality documents.">高校科研、产品经理、文创策划等高压交付人群，需要的不是「代写」，而是能把专业判断变成高质量文档的搭档。</p></div>
+<div class="pq"><div class="lbl"><span data-zh="方案" data-en="SOLUTION">方案</span></div><p data-zh="「不替代思考，只放大专业表达」：通过结构化追问澄清需求，调用 Expert Skills 与 Agentic RAG 生成初稿，再进入人工审校与后续行动。" data-en="&quot;Amplify expertise, don&#x27;t replace thinking&quot;: structured follow-up questions clarify intent, Expert Skills and Agentic RAG draft the document, followed by human review and next actions.">「不替代思考，只放大专业表达」：通过结构化追问澄清需求，调用 Expert Skills 与 Agentic RAG 生成初稿，再进入人工审校与后续行动。</p></div>
+<ul class="pl"><li><span data-zh="结构化追问 → 初稿 → 审校 → 任务列表的完整链路" data-en="Structured questioning → draft → review → task list">结构化追问 → 初稿 → 审校 → 任务列表的完整链路</span></li><li><span data-zh="首批 Skills：「艺术家访谈」「音乐会策划」" data-en="First Skills: artist interviews, concert planning">首批 Skills：「艺术家访谈」「音乐会策划」</span></li><li><span data-zh="把专家判断、追问节点、输出模板沉淀为可复用资产" data-en="Expert criteria, question nodes and templates as reusable assets">把专家判断、追问节点、输出模板沉淀为可复用资产</span></li></ul>
+<div class="prole"><b><span data-zh="我的角色" data-en="My role">我的角色</span></b><span data-zh="产品经理 · 产品定位 · 竞品与 GTM · Skills 建模" data-en="Product manager · positioning · competition &amp; GTM · Skills modelling">产品经理 · 产品定位 · 竞品与 GTM · Skills 建模</span></div></div>
+<div class="pv"><div class="mock sf"><div class="bar"><i></i><i></i><i></i><small>sparkflow — 音乐会策划 Skill</small></div>
+<div class="sfb"><div class="q u">帮我写一份室内乐音乐会的策划案</div>
+<div class="q a"><b>SparkFlow</b> 先确认 3 个关键点：<ol><li>目标观众是学生还是乐迷？</li><li>预算与场地规模？</li><li>希望突出曲目还是演奏家？</li></ol></div>
+<div class="chips"><span>Expert Skill · 音乐会策划</span><span>Agentic RAG · 12 份参考</span></div>
+<div class="doc"><div class="l w60"></div><div class="l"></div><div class="l w80"></div><div class="l w40"></div><div class="ok">✓ 初稿完成 · 待人工审校</div></div></div></div></div></article></div></section><section class="sec soft" id="method"><div class="wrap"><div class="sh"><div class="eb">HOW I WORK</div><h2 data-zh-html="从 一 个 想 法 ，&lt;br&gt;到 一 次 交 付 。" data-en-html="From an idea&lt;br&gt;to a delivery.">从 一 个 想 法 ，<br>到 一 次 交 付 。</h2></div>
+<ol class="steps4"><li class="rv"><span class="sn">01</span><h4 data-zh="听见真实需求" data-en="Hear the real need">听见真实需求</h4><p data-zh="500 位目标用户访谈，痛点聚类、画像与付费场景验证。" data-en="500 user interviews, pain clustering, personas and willingness-to-pay.">500 位目标用户访谈，痛点聚类、画像与付费场景验证。</p></li><li class="rv"><span class="sn">02</span><h4 data-zh="定义可验收的产品" data-en="Define what “done” means">定义可验收的产品</h4><p data-zh="PRD、用户旅程、交付标准，先写清楚什么叫“完成”。" data-en="PRDs, user journeys and acceptance criteria — define “done” first.">PRD、用户旅程、交付标准，先写清楚什么叫“完成”。</p></li><li class="rv"><span class="sn">03</span><h4 data-zh="用 Agent 快速做出来" data-en="Build fast with agents">用 Agent 快速做出来</h4><p data-zh="Claude Code / Codex 做前端原型、脚本与工作流，当天验证想法。" data-en="Prototypes, scripts and workflows with Claude Code / Codex — validate ideas the same day.">Claude Code / Codex 做前端原型、脚本与工作流，当天验证想法。</p></li><li class="rv"><span class="sn">04</span><h4 data-zh="用数据评测与迭代" data-en="Measure, then iterate">用数据评测与迭代</h4><p data-zh="准确率、Token 成本、延迟、一致性——用研究方法评估产品。" data-en="Accuracy, token cost, latency, consistency — evaluate products like research.">准确率、Token 成本、延迟、一致性——用研究方法评估产品。</p></li></ol></div></section><section class="sec" id="research"><div class="wrap"><div class="sh"><div class="eb">RESEARCH</div><h2 data-zh-html="研 究 人 ，&lt;br&gt;才 懂 怎 么 做 A I 。" data-en-html="Studying people&lt;br&gt;to build better AI.">研 究 人 ，<br>才 懂 怎 么 做 A I 。</h2><p class="shp" data-zh="我研究用户如何信任 AI——这正是 AI 产品最难的那部分。" data-en="I study how people trust AI — the hardest part of building AI products.">我研究用户如何信任 AI——这正是 AI 产品最难的那部分。</p></div>
+<div class="rstats rv"><div><b>8</b><span data-zh="篇国际会议 / 论坛论文" data-en="conference papers">篇国际会议 / 论坛论文</span></div><div><b>6</b><span data-zh="次独立一作口头 / 海报报告" data-en="solo first-author talks">次独立一作口头 / 海报报告</span></div><div><b>N=327</b><span data-zh="AI 署名与新闻信任实验" data-en="experiment on AI bylines">AI 署名与新闻信任实验</span></div><div><b>5,856</b><span data-zh="篇跨区域新闻语料" data-en="news articles analysed">篇跨区域新闻语料</span></div></div>
+<div class="feat rv"><div class="fimg"><img src="assets/npol-home.jpg" alt="NPOL"><div class="fmini"><img src="assets/npol-monitor.jpg" alt=""><img src="assets/npol-report.jpg" alt=""></div></div>
+<div class="ftx"><div class="eb">FEATURED AGENT</div><h3 data-zh="NPOL 舆情智能体" data-en="NPOL Public-Opinion Agent">NPOL 舆情智能体</h3><p class="pk" data-zh="中国传媒大学媒体融合与传播国家重点实验室 · 2026.07 至今" data-en="CUC State Key Lab of Media Convergence &amp; Communication · Jul 2026 –">中国传媒大学媒体融合与传播国家重点实验室 · 2026.07 至今</p><p data-zh="一句话描述事件与时间要求，智能体联网检索、生成监测方案，汇聚多源多语种信息、研判舆论走势，几分钟内交付图文报告；报告支持源码 / 分栏 / 正文编辑、AI 修改、导出 DOCX 与推送。从前端交互到后端流程都围绕 Agent 构建。" data-en="Describe an event in one sentence; the agent searches the web, drafts a monitoring plan, aggregates multilingual sources, assesses sentiment trends and delivers an illustrated report within minutes — editable in source / split / preview modes, revisable by AI, exportable to DOCX. Built around agents end to end.">一句话描述事件与时间要求，智能体联网检索、生成监测方案，汇聚多源多语种信息、研判舆论走势，几分钟内交付图文报告；报告支持源码 / 分栏 / 正文编辑、AI 修改、导出 DOCX 与推送。从前端交互到后端流程都围绕 Agent 构建。</p>
+<div class="chips"><span>Multi-Agent</span><span>Tool Calling</span><span>Benchmark</span><span>Token / Latency</span></div>
+<p class="small" data-zh="多 Agent 分工、上下文共享与协作决策；以任务成功率、Token 成本与执行延迟评测方案。" data-en="Agent task division, shared context and collaborative decisions — evaluated on task success, token cost and latency.">多 Agent 分工、上下文共享与协作决策；以任务成功率、Token 成本与执行延迟评测方案。</p></div></div>
+<div class="duo">
+<div class="card rv"><div class="eb">UNIVERSITY OF MIAMI · 2026.08 –</div><h4 data-zh="AI 视频编码 Agent" data-en="Video Annotation Agent">AI 视频编码 Agent</h4><p data-zh="把 TikTok 研究 Codebook 拆解为编码规则与 Prompt，构建 LLM 自动标注 → 结果校验 → 人工复核的 Pipeline，并对一致性与边界案例做效果评估。" data-en="Turned a TikTok research codebook into rules and prompts; built an LLM pipeline of auto-annotation → validation → human review, evaluated for consistency and edge cases.">把 TikTok 研究 Codebook 拆解为编码规则与 Prompt，构建 LLM 自动标注 → 结果校验 → 人工复核的 Pipeline，并对一致性与边界案例做效果评估。</p></div>
+<div class="card rv"><div class="eb">UNIVERSITY OF MIAMI · 2026.08 –</div><h4 data-zh="生成式 AI 素养与平台治理" data-en="GenAI Literacy &amp; Platform Governance">生成式 AI 素养与平台治理</h4><p data-zh="比较 Instagram、小红书等平台的 AI 治理，筛选 GenAI Literacy 量表，设计问卷与实验并进行信效度与调节效应分析。" data-en="Comparative study of AI governance on Instagram and Xiaohongshu; selected GenAI literacy scales, designed surveys and experiments with reliability and moderation analyses.">比较 Instagram、小红书等平台的 AI 治理，筛选 GenAI Literacy 量表，设计问卷与实验并进行信效度与调节效应分析。</p></div></div>
+<h3 class="sub rv"><span data-zh="论文与会议报告" data-en="Publications &amp; Presentations">论文与会议报告</span></h3><ol class="pubs"><li class="pub rv"><div class="pv1"><b>IAMCR 2026</b><small>International Association for Media and Communication Research</small></div><div><p class="ptl">Authority Erosion and Agency Deficit: Examining Algorithm Aversion Toward AI-Authored News and Its Boundaries in the Chinese Context</p><p class="pau"><b>Wang, H.</b> (2026)</p><span class="pbadge hot" data-zh="口头报告 · 2×2 混合实验 N=327" data-en="Oral · 2×2 mixed experiment, N=327">口头报告 · 2×2 混合实验 N=327</span></div></li><li class="pub rv"><div class="pv1"><b>ICA Beijing 2026</b><small>ICA Beijing Regional Conference</small></div><div><p class="ptl">The Transparency Paradox in Algorithmic Governance: How AI Disclosure Redistributes Institutional Trust in China</p><p class="pau"><b>Wang, H.</b> (2026)</p><span class="pbadge" data-zh="口头报告" data-en="Oral">口头报告</span></div></li><li class="pub rv"><div class="pv1"><b>ICA Beijing 2026</b><small>ICA Beijing Regional Conference</small></div><div><p class="ptl">Manufacturing Anxiety: Transnational Semantic Downgrade and Media Hype of "Agent Skills"</p><p class="pau"><b>Wang, H.</b> (2026)</p><span class="pbadge" data-zh="口头报告 · 5,856 篇新闻语料 · 语义降级指数 SDI" data-en="Oral · 5,856-article corpus · Semantic Downgrade Index">口头报告 · 5,856 篇新闻语料 · 语义降级指数 SDI</span></div></li><li class="pub rv"><div class="pv1"><b>NCA Xiamen 2026</b><small>NCA Xiamen Summit: Global Communication and Global Governance</small></div><div><p class="ptl">The "Hollow" Mediator: How AI-Generated News Reshapes Meaning-Making and Audience Connection</p><p class="pau"><b>Wang, H.</b> (2026)</p><span class="pbadge" data-zh="口头报告 · 实验 + 计算文本分析" data-en="Oral · experiment + computational text analysis">口头报告 · 实验 + 计算文本分析</span></div></li><li class="pub rv"><div class="pv1"><b>ICA 2026</b><small>International Intelligent Communication Academic Forum</small></div><div><p class="ptl">The Immovable Anchor: Why Institutional Authority Cannot "Transfer" Trust to AI Agents</p><p class="pau"><b>Wang, H.</b> (2026)</p><span class="pbadge" data-zh="口头报告" data-en="Oral">口头报告</span></div></li><li class="pub rv"><div class="pv1"><b>SRF 2026</b><small>The 6th Social Robotics Forum</small></div><div><p class="ptl">AI Communication as a Pseudo Event: Landscape Production, Capital Logic and Media Myth in Moltbook</p><p class="pau"><b>Wang, H.</b> (2026)</p><span class="pbadge hot" data-zh="最佳海报奖" data-en="Best Poster Award">最佳海报奖</span></div></li><li class="pub rv"><div class="pv1"><b>AIEM 2026</b><small>Hong Kong Baptist University</small></div><div><p class="ptl">From Conflict to Coordination: Policy Discourse and Negotiated Governance of Generative AI in Cultural Industries</p><p class="pau"><b>Wang, H.</b>, &amp; Gong, J. (2026)</p><span class="pbadge" data-zh="已录用 · 与 Gong, J. 合作 · 205 份中美政策文本 LDA" data-en="Accepted · with Gong, J. · LDA on 205 CN/US policy texts">已录用 · 与 Gong, J. 合作 · 205 份中美政策文本 LDA</span></div></li><li class="pub rv"><div class="pv1"><b>AIEM 2026</b><small>Hong Kong Baptist University</small></div><div><p class="ptl">When Machines Compose: Generative AI Literacy, Governance Judgments, and User Responses to AI-Generated Music</p><p class="pau"><b>Wang, H.</b>, &amp; Gong, J. (2026)</p><span class="pbadge" data-zh="已录用 · 与 Gong, J. 合作 · 196 份抖音用户问卷" data-en="Accepted · with Gong, J. · survey of 196 Douyin users">已录用 · 与 Gong, J. 合作 · 196 份抖音用户问卷</span></div></li></ol></div></section><section class="sec soft" id="experience"><div class="wrap"><div class="sh"><div class="eb">EXPERIENCE</div><h2 data-zh-html="做 过 内 容 ，&lt;br&gt;所 以 懂 用 户 。" data-en-html="I made content,&lt;br&gt;so I know users.">做 过 内 容 ，<br>所 以 懂 用 户 。</h2><p class="shp" data-zh="传媒背景让我习惯从用户注意力、叙事与分发出发思考产品。" data-en="A media background taught me to think about attention, narrative and distribution.">传媒背景让我习惯从用户注意力、叙事与分发出发思考产品。</p></div>
+<ol class="tl"><li class="rv"><span class="ed">2025.11 —</span><div><h4 data-zh="北京知更远见科技有限公司" data-en="Zhigeng Vision Technology">北京知更远见科技有限公司</h4><span class="er" data-zh="创始人兼 CEO" data-en="Founder &amp; CEO">创始人兼 CEO</span><p data-zh="Clip / MeetFlow / SparkFlow 三条产品线 0→1；500 位用户访谈；商业计划、定价与融资材料。" data-en="Three products 0→1; 500 user interviews; business plan, pricing, fundraising.">Clip / MeetFlow / SparkFlow 三条产品线 0→1；500 位用户访谈；商业计划、定价与融资材料。</p></div></li><li class="rv"><span class="ed">2025.01 —</span><div><h4 data-zh="中央广播电视总台 · 央视音乐" data-en="China Media Group · CCTV Music">中央广播电视总台 · 央视音乐</h4><span class="er" data-zh="新媒体编导" data-en="New Media Director">新媒体编导</span><p data-zh="从 0 到 1 搭建《左岸有约》短视频矩阵，全网累计播放 1,500 万+，单条最高 527 万；参与《维也纳新年音乐会》AIGC 片头与《中国人的年夜饭》H5 宣发。" data-en="Built the “Zuo’an Youyue” short-video matrix from scratch: 15M+ views, 5.27M peak; AIGC opener for the Vienna New Year’s Concert campaign.">从 0 到 1 搭建《左岸有约》短视频矩阵，全网累计播放 1,500 万+，单条最高 527 万；参与《维也纳新年音乐会》AIGC 片头与《中国人的年夜饭》H5 宣发。</p></div></li><li class="rv"><span class="ed">2025.03 — 2026.02</span><div><h4 data-zh="光明网 AIGC 系列视频" data-en="Guangming Online AIGC Videos">光明网 AIGC 系列视频</h4><span class="er" data-zh="主策划 &amp; 制作人" data-en="Lead Planner &amp; Producer">主策划 & 制作人</span><p data-zh="主导 AIGC 新闻视频从脚本到生成制作，作品登上光明网经济频道首页；另有 6 篇约稿作品公开发表。" data-en="Led AIGC news videos from script to production, featured on the Economic Channel homepage; 6 commissioned pieces published.">主导 AIGC 新闻视频从脚本到生成制作，作品登上光明网经济频道首页；另有 6 篇约稿作品公开发表。</p></div></li><li class="rv"><span class="ed">2025.09</span><div><h4 data-zh="蓝色光标 · 联想 YOGA TVC" data-en="BlueFocus · Lenovo YOGA TVC">蓝色光标 · 联想 YOGA TVC</h4><span class="er" data-zh="导演" data-en="Director">导演</span><p data-zh="牵头创意策划、脚本开发、客户反馈与后期排期协同，广告按期上线并获客户认可。" data-en="Led concept, script, client feedback and post-production; delivered on time with client approval.">牵头创意策划、脚本开发、客户反馈与后期排期协同，广告按期上线并获客户认可。</p></div></li><li class="rv"><span class="ed">2024.11 — 2025.01</span><div><h4 data-zh="字节跳动 · 抖音校园" data-en="ByteDance · Douyin Campus">字节跳动 · 抖音校园</h4><span class="er" data-zh="责任编辑" data-en="Editorial Intern">责任编辑</span><p data-zh="策划抖音校园线下开放日，覆盖全国高校，吸引 5,000+ 学生参与。" data-en="Planned a nationwide campus open day with 5,000+ student participants.">策划抖音校园线下开放日，覆盖全国高校，吸引 5,000+ 学生参与。</p></div></li></ol></div></section><section class="sec" id="awards"><div class="wrap"><div class="sh"><div class="eb">AWARDS</div><h2 data-zh-html="被 认 可 的 ，&lt;br&gt;都 是 做 出 来 的 。" data-en-html="Recognition,&lt;br&gt;earned by shipping.">被 认 可 的 ，<br>都 是 做 出 来 的 。</h2></div><div class="ags"><div class="ag rv"><h4 data-zh="竞赛" data-en="Competitions">竞赛</h4><ul><li class="top"><span class="ay">2026</span><div><b data-zh="全国一等奖" data-en="National 1st Prize">全国一等奖</b><p data-zh="全国大学生广告艺术大赛 ·《银声引》" data-en="National College Students’ Advertising Art Competition">全国大学生广告艺术大赛 ·《银声引》</p></div></li><li class="top"><span class="ay">2026</span><div><b data-zh="二等奖" data-en="2nd Prize">二等奖</b><p data-zh="京彩 OPC 创业大赛 · MeetFlow（独立项目）" data-en="Jingcai OPC Competition · MeetFlow (solo)">京彩 OPC 创业大赛 · MeetFlow（独立项目）</p></div></li><li class=""><span class="ay">2026</span><div><b data-zh="三等奖" data-en="3rd Prize">三等奖</b><p data-zh="“挑战杯”首都大学生创业计划竞赛 · SparkFlow（项目负责人）" data-en="“Challenge Cup” Capital Entrepreneurship Competition · SparkFlow (lead)">“挑战杯”首都大学生创业计划竞赛 · SparkFlow（项目负责人）</p></div></li><li class=""><span class="ay">2026</span><div><b data-zh="三等奖" data-en="3rd Prize">三等奖</b><p data-zh="京彩大赛 · SparkFlow" data-en="Jingcai Competition · SparkFlow">京彩大赛 · SparkFlow</p></div></li></ul></div><div class="ag rv"><h4 data-zh="创意与 AIGC" data-en="Creative &amp; AIGC">创意与 AIGC</h4><ul><li class=""><span class="ay">2025</span><div><b data-zh="优秀作品奖" data-en="Excellence Award">优秀作品奖</b><p data-zh="北京国际视听大会 AI 视听创作嘉年华 ·《绣绘亦庄》" data-en="Beijing Intl. Audiovisual Conference AI Film ·“Xiuhui Yizhuang”">北京国际视听大会 AI 视听创作嘉年华 ·《绣绘亦庄》</p></div></li><li class=""><span class="ay">2025–26</span><div><b data-zh="优秀奖 ×4" data-en="Excellence ×4">优秀奖 ×4</b><p data-zh="大广节学院奖 · 视频类 ×3、营销传播类 ×1" data-en="China College Students’ Ad Festival Campus Award (video ×3, marketing ×1)">大广节学院奖 · 视频类 ×3、营销传播类 ×1</p></div></li><li class=""><span class="ay">2025</span><div><b data-zh="三等奖" data-en="3rd Prize">三等奖</b><p data-zh="“小娇韵诗”品牌创意设计大赛" data-en="“Xiao Clarins” Brand Creative Competition">“小娇韵诗”品牌创意设计大赛</p></div></li><li class=""><span class="ay">2024</span><div><b data-zh="四分之一决赛" data-en="Quarterfinalist">四分之一决赛</b><p data-zh="香港科技大学 AIGC 电影节" data-en="HKUST AIGC Film Festival">香港科技大学 AIGC 电影节</p></div></li></ul></div><div class="ag rv"><h4 data-zh="学业与学术" data-en="Academic">学业与学术</h4><ul><li class="top"><span class="ay">2025</span><div><b data-zh="校一等奖学金" data-en="1st-Class Scholarship">校一等奖学金</b><p data-zh="中国传媒大学" data-en="Communication University of China">中国传媒大学</p></div></li><li class="top"><span class="ay">2025</span><div><b data-zh="专业第一" data-en="Ranked 1st">专业第一</b><p data-zh="综合测评 1 / 39 · GPA 3.78 / 4.0" data-en="Comprehensive evaluation 1/39 · GPA 3.78">综合测评 1 / 39 · GPA 3.78 / 4.0</p></div></li><li class=""><span class="ay">2026</span><div><b data-zh="学术之星" data-en="Academic Star">学术之星</b><p data-zh="国际传媒教育学院 2025–2026 年度" data-en="School of International Media Education, 2025–26">国际传媒教育学院 2025–2026 年度</p></div></li><li class=""><span class="ay">2026</span><div><b data-zh="最佳海报" data-en="Best Poster">最佳海报</b><p data-zh="第六届社交机器人论坛" data-en="6th Social Robotics Forum">第六届社交机器人论坛</p></div></li><li class=""><span class="ay">2026</span><div><b data-zh="结题优秀" data-en="Excellent">结题优秀</b><p data-zh="大学生创新创业训练计划 · 北京市级立项" data-en="Innovation &amp; Entrepreneurship Programme · Municipal">大学生创新创业训练计划 · 北京市级立项</p></div></li><li class=""><span class="ay">2025</span><div><b data-zh="立项 ×2" data-en="Approved ×2">立项 ×2</b><p data-zh="大学生创新创业训练计划 · 校级（1 项为负责人）" data-en="Innovation Programme · University level (1 as lead)">大学生创新创业训练计划 · 校级（1 项为负责人）</p></div></li></ul></div></div></div></section><section class="sec soft" id="about"><div class="wrap ab">
+<div class="abp rv"><img src="assets/photo.jpg" alt="王浩成"><div class="abn"><b>王浩成</b><span>Haocheng Wang</span></div></div>
+<div class="abt rv"><div class="eb">ABOUT</div><h2 data-zh-html="广告学出身，&lt;br&gt;在做 AI 产品的人。" data-en-html="An advertising student&lt;br&gt;who builds AI products.">广告学出身，<br>在做 AI 产品的人。</h2>
+<p class="lead2" data-zh="我在中国传媒大学读广告学，同时修读诺丁汉特伦特大学传播学双学位。在央视做内容，让我学会抓住用户注意力；做研究，让我理解人如何信任 AI；创业，让我把这两件事变成产品。" data-en="I study Advertising at Communication University of China, with a dual degree in Communication from Nottingham Trent University. Content work at CCTV taught me attention; research taught me how people trust AI; founding a startup turned both into products.">我在中国传媒大学读广告学，同时修读诺丁汉特伦特大学传播学双学位。在央视做内容，让我学会抓住用户注意力；做研究，让我理解人如何信任 AI；创业，让我把这两件事变成产品。</p>
+<div class="edu"><img src="assets/cuc-logo.png" alt="中国传媒大学"><div><b data-zh="中国传媒大学 × 诺丁汉特伦特大学" data-en="CUC × Nottingham Trent University">中国传媒大学 × 诺丁汉特伦特大学</b><p data-zh="广告学 / 传播学双学位 · 本科 · 2024.09 — 2028 · 211 / 双一流" data-en="BA Advertising &amp; BA Communication (dual degree) · 2024 – 2028">广告学 / 传播学双学位 · 本科 · 2024.09 — 2028 · 211 / 双一流</p><p data-zh="GPA 3.78 / 4.0 · 专业第一 · 校一等奖学金 · CET-6" data-en="GPA 3.78 · Ranked 1st · 1st-Class Scholarship · CET-6">GPA 3.78 / 4.0 · 专业第一 · 校一等奖学金 · CET-6</p></div></div>
+<div class="sks"><div class="skg"><h5 data-zh="AI 产品 / 工作流" data-en="AI Product">AI 产品 / 工作流</h5><div class="chips"><span>PRD</span><span>原型 Prototype</span><span>用户访谈 Interviews</span><span>竞品分析 Competitive</span><span>Prompt</span><span>Agent Workflow</span><span>RAG</span><span>Expert Skills</span><span>MCP / Tool Calling</span></div></div><div class="skg"><h5 data-zh="编程与数据" data-en="Code &amp; Data">编程与数据</h5><div class="chips"><span>Claude Code</span><span>Codex</span><span>Cursor</span><span>Python</span><span>R</span><span>API</span><span>数据清洗 Data cleaning</span><span>效果评估 Evaluation</span></div></div><div class="skg"><h5 data-zh="研究方法" data-en="Research">研究方法</h5><div class="chips"><span>实验设计 Experiments</span><span>问卷 Surveys</span><span>计算文本分析 Text mining</span><span>LDA</span><span>网络分析 Networks</span><span>回归 / 调节 Regression</span></div></div><div class="skg"><h5 data-zh="品牌与内容" data-en="Brand &amp; Content">品牌与内容</h5><div class="chips"><span>品牌定位 Positioning</span><span>GTM</span><span>内容矩阵 Content matrix</span><span>Final Cut Pro</span><span>After Effects</span><span>Photoshop</span><span>Lovart</span><span>Veo</span></div></div></div></div></div></section><section class="sec" id="faq"><div class="wrap narrow"><div class="sh"><div class="eb">FAQ</div><h2 data-zh-html="再 了 解 一 点 。" data-en-html="A little more.">再 了 解 一 点 。</h2></div><details class="rv" open><summary><span data-zh="为什么从传媒转向 AI 产品？" data-en="Why move from media to AI products?">为什么从传媒转向 AI 产品？</span></summary><p data-zh="我一直在做的其实是同一件事：理解人，再把复杂的东西讲清楚、做出来。AI 让「做出来」这一步第一次可以由我自己完成。" data-en="I have always done the same thing: understand people, then make complex things clear and real. AI finally lets me do the “make it real” part myself.">我一直在做的其实是同一件事：理解人，再把复杂的东西讲清楚、做出来。AI 让「做出来」这一步第一次可以由我自己完成。</p></details><details class="rv"><summary><span data-zh="我能给团队带来什么？" data-en="What do I bring to a team?">我能给团队带来什么？</span></summary><p data-zh="用户研究和实验设计的能力，0→1 定义产品与商业模式的经验，以及用 Claude Code / Codex 当天把想法做成原型的执行力。" data-en="Rigorous user research and experiment design, 0→1 product and business-model experience, and the ability to prototype an idea the same day with Claude Code / Codex.">用户研究和实验设计的能力，0→1 定义产品与商业模式的经验，以及用 Claude Code / Codex 当天把想法做成原型的执行力。</p></details><details class="rv"><summary><span data-zh="现在在找什么机会？" data-en="What am I looking for?">现在在找什么机会？</span></summary><p data-zh="AI 产品经理实习，方向包括 AI Agent、工作流、AI 原生应用。北京，可尽快到岗。" data-en="AI product manager internships — AI agents, workflows, AI-native apps. Based in Beijing, available soon.">AI 产品经理实习，方向包括 AI Agent、工作流、AI 原生应用。北京，可尽快到岗。</p></details></div></section><section class="sec contact" id="contact"><div class="wrap ct">
+<div><div class="eb">CONTACT</div><h2 data-zh-html="把 你 的 问 题 ，&lt;br&gt;交 给 我 。" data-en-html="Bring me&lt;br&gt;your problem.">把 你 的 问 题 ，<br>交 给 我 。</h2>
+<div class="cl"><a href="tel:+8618551651018"><small><span data-zh="电话" data-en="Phone">电话</span></small>+86 185 5165 1018</a><a href="mailto:202427103014Z@mails.cuc.edu.cn"><small><span data-zh="邮箱" data-en="Email">邮箱</span></small>202427103014Z@mails.cuc.edu.cn</a><span><small><span data-zh="所在地" data-en="Location">所在地</span></small><span data-zh="北京" data-en="Beijing, China">北京</span></span></div>
+<div class="cta"><a class="btn dark resume" href="resume-zh.pdf" download><span data-zh="下载中文简历 ↓" data-en="Download CV ↓">下载中文简历 ↓</span></a><a class="btn ghost" href="https://clipai.space/" target="_blank" rel="noopener">clipai.space ›</a></div></div>
+<div class="qr"><img src="assets/wechat.jpg" alt="WeChat QR"><p data-zh="扫码添加微信" data-en="Scan to add on WeChat">扫码添加微信</p></div></div>
+<footer><span>haocheng<i>.</i></span><span>YOUR PROBLEM. MY PRODUCT.</span><span>© 2026 王浩成 Haocheng Wang</span></footer></section>
+<script>
+const goals={zh:"做一个帮小团队把想法变成交付物的 AI 产品",en:"Build an AI product that helps small teams ship ideas"};
+let lang="zh",timer;
+function typeGoal(){
+  clearTimeout(timer);const el=document.getElementById('goal');const t=goals[lang];let i=0;
+  const steps=[...document.querySelectorAll('.step')];
+  steps.forEach(s=>{s.className='step';s.querySelector('.st').textContent='wait'});
+  (function ty(){el.innerHTML=t.slice(0,i)+'<span class="caret"></span>';if(i++<t.length)timer=setTimeout(ty,lang=='zh'?70:35);else runSteps(steps,0)})();
+}
+function runSteps(steps,k){
+  if(k>0){steps[k-1].className='step on done';steps[k-1].querySelector('.st').textContent='✓ done'}
+  if(k==steps.length){timer=setTimeout(typeGoal,4200);return}
+  steps[k].className='step on run';steps[k].querySelector('.st').textContent='running…';
+  timer=setTimeout(()=>runSteps(steps,k+1),1300);
+}
+document.getElementById('lang').onclick=()=>{
+  lang=lang=='zh'?'en':'zh';document.documentElement.lang=lang=='zh'?'zh-CN':'en';
+  document.getElementById('lang').innerHTML=lang=='zh'?'<b>中</b> / EN':'中 / <b>EN</b>';
+  document.querySelectorAll('[data-zh]').forEach(e=>e.textContent=e.dataset[lang]);
+  document.querySelectorAll('[data-zh-html]').forEach(e=>e.innerHTML=e.dataset[lang+'Html']);
+  typeGoal();
+};
+typeGoal();
+
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+function setResume(){document.querySelectorAll('a.resume').forEach(a=>a.href=lang=='zh'?'resume-zh.pdf':'cv-en.pdf')}
+document.getElementById('lang').addEventListener('click',setResume);
+</script>
+</body>
+</html>
